@@ -34,7 +34,13 @@ if (TARGET === 'start') {
   module.exports = merge(common, {
     entry: ['./src/App'],
     output: {
-      filename: 'index.js'
+      filename: 'index.js',
+      library: 'react-coverflow2',
+      libraryTarget: 'commonjs2',
+    },
+    externals: {
+      'react': 'react',
+      'react-dom': 'react-dom'
     },
     module: {
       loaders: [{

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Coverflow from './App';
 
-ReactDOM.render(<Coverflow onActiveClick={(x)=>console.log(x)}>
+ReactDOM.render(<Coverflow onActiveClick={(x)=>console.log(x)} active='2'>
   <img src="images/winter.jpg"></img>
   <img src="images/14.jpg"></img>
   <img src="images/cloudatlas.jpg"></img>

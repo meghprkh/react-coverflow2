@@ -6,27 +6,33 @@ var isEquivalent = require('./isEquivalent.lib.js');
 
 var Coverflow = React.createClass({
   componentDidMount: function () {
-    coverflow.initialize(ReactDOM.findDOMNode(this), this.props);
-    coverflow.setActive(this.props.active);
+    if (this.props.children.length != 0) {
+      coverflow.initialize(ReactDOM.findDOMNode(this), this.props);
+      coverflow.setActive(parseInt(this.props.active));
+    }
   },
   componentDidUpdate: function() {
-    coverflow.initialize(ReactDOM.findDOMNode(this), this.props);
-    coverflow.setActive(this.props.active);
+    if (this.props.children.length != 0) {
+      coverflow.initialize(ReactDOM.findDOMNode(this), this.props);
+      coverflow.setActive(parseInt(this.props.active));
+    }
   },
-  shouldComponentUpdate: function(nextProps) {
+  shouldComponentUpdate: function(nextPropsReadOnly) {
+    var nextProps = {};
+    Object.assign(nextProps, nextPropsReadOnly);
     if(isEquivalent(this.props, nextProps)) return false;
     else {
-      var temp = nextProps.active;
+      var temp = parseInt(nextProps.active);
       nextProps.active = this.props.active;
       if(isEquivalent(this.props, nextProps)) {
-        coverflow.setActive(temp);
+        if (temp >= 0 && temp < this.props.children.length) coverflow.setActive(temp);
         return false;
       } else return true;
     }
   },
   render: function() {
     return (
-      <div style={{width: '100%'}}>
+      <div style={{width: '100%'}} onLoad={this.componentDidUpdate}>
         {this.props.children}
       </div>
     );

@@ -1,6 +1,6 @@
 {
   "name": "react-coverflow2",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A coverflow component for React",
   "main": "lib/index.js",
   "scripts": {
@@ -29,6 +29,7 @@
     "babel-core": "^6.0.20",
     "babel-eslint": "^4.1.3",
     "babel-loader": "^6.0.1",
+    "babel-plugin-transform-object-assign": "^6.3.13",
     "babel-preset-es2015": "^6.0.15",
     "babel-preset-react": "^6.0.15",
     "babel-preset-stage-0": "^6.0.15",
@@ -40,7 +41,7 @@
     "webpack-merge": "^0.3.2"
   },
   "dependencies": {
-    "coverflow": "^1.0.5",
+    "coverflow": "^1.0.6",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
   }

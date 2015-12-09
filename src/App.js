@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var PropTypes = React.PropTypes;
 var coverflow = require('coverflow');
-Object.is = require('object-is');
+var isEquivalent = require('./isEquivalent.lib.js');
 
 var Coverflow = React.createClass({
   componentDidMount: function () {
@@ -14,11 +14,11 @@ var Coverflow = React.createClass({
     coverflow.setActive(this.props.active);
   },
   shouldComponentUpdate: function(nextProps) {
-    if(Object.is(this.props, nextProps)) return false;
+    if(isEquivalent(this.props, nextProps)) return false;
     else {
       var temp = nextProps.active;
       nextProps.active = this.props.active;
-      if(Object.is(this.props, nextProps)) {
+      if(isEquivalent(this.props, nextProps)) {
         coverflow.setActive(temp);
         return false;
       } else return true;

@@ -1,6 +1,6 @@
 {
   "name": "react-coverflow2",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A coverflow component for React",
   "main": "lib/index.js",
   "scripts": {
@@ -40,7 +40,7 @@
     "webpack-merge": "^0.3.2"
   },
   "dependencies": {
-    "coverflow": "^1.0.4",
+    "coverflow": "^1.0.5",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
   }

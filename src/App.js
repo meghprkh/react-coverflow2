@@ -1,19 +1,18 @@
 var React = require('react');
-var ReactDOM = require('react-dom');
 var PropTypes = React.PropTypes;
 var coverflow = require('coverflow');
 var isEquivalent = require('./isEquivalent.lib.js');
 
 var Coverflow = React.createClass({
   componentDidMount: function () {
-    if (this.props.children.length != 0) {
-      coverflow.initialize(ReactDOM.findDOMNode(this), this.props);
+    if (this.props.children.length != 0 && this.node) {
+      coverflow.initialize(this.node, this.props);
       coverflow.setActive(parseInt(this.props.active));
     }
   },
   componentDidUpdate: function() {
-    if (this.props.children.length != 0) {
-      coverflow.initialize(ReactDOM.findDOMNode(this), this.props);
+    if (this.props.children.length != 0 && this.node) {
+      coverflow.initialize(this.node, this.props);
       coverflow.setActive(parseInt(this.props.active));
     }
   },
@@ -32,7 +31,8 @@ var Coverflow = React.createClass({
   },
   render: function() {
     return (
-      <div style={{width: '100%'}} onLoad={this.componentDidUpdate}>
+      <div style={{width: '100%'}} onLoad={this.componentDidUpdate}
+           ref={node => this.node = node}>
         {this.props.children}
       </div>
     );

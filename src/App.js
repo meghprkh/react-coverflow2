@@ -32,7 +32,7 @@ var Coverflow = React.createClass({
   render: function() {
     return (
       <div style={{width: '100%'}} onLoad={this.activateCoverflow}
-           ref={node => this.node = node}>
+           ref={node => {this.node = node; this.activateCoverflow()}}>
         {this.props.children}
       </div>
     );

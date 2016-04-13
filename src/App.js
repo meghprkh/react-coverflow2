@@ -13,6 +13,9 @@ var Coverflow = React.createClass({
   componentDidUpdate: function() {
     this.activateCoverflow()
   },
+  componentWillUnmount: function() {
+    coverflow.unmount()
+  },
   shouldComponentUpdate: function(nextPropsReadOnly) {
     var nextProps = {};
     Object.assign(nextProps, nextPropsReadOnly);

@@ -4,17 +4,14 @@ var coverflow = require('coverflow');
 var isEquivalent = require('./isEquivalent.lib.js');
 
 var Coverflow = React.createClass({
-  componentDidMount: function () {
+  activateCoverflow: function () {
     if (this.props.children.length != 0 && this.node) {
       coverflow.initialize(this.node, this.props);
       coverflow.setActive(parseInt(this.props.active));
     }
   },
   componentDidUpdate: function() {
-    if (this.props.children.length != 0 && this.node) {
-      coverflow.initialize(this.node, this.props);
-      coverflow.setActive(parseInt(this.props.active));
-    }
+    this.activateCoverflow()
   },
   shouldComponentUpdate: function(nextPropsReadOnly) {
     var nextProps = {};
@@ -31,7 +28,7 @@ var Coverflow = React.createClass({
   },
   render: function() {
     return (
-      <div style={{width: '100%'}} onLoad={this.componentDidUpdate}
+      <div style={{width: '100%'}} onLoad={this.activateCoverflow}
            ref={node => this.node = node}>
         {this.props.children}
       </div>
